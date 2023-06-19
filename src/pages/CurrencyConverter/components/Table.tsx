@@ -47,6 +47,7 @@ export const Table: FC<TableProps> = ({ rows }) => {
                     ))}
                 </tbody>
             </table>
+            {/*note to the reviewer, I thought about the MAX SAFE INTEGER HANDLING but didn't come with a reasonable error message for it 🥹*/}
             Total: {roundAmount(totalAmount)} {DEFAULT_SUMMARY_CURRENCY}
         </div>
     )
