@@ -1,11 +1,12 @@
-import './App.css'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { CurrencyConverter } from './pages/CurrencyConverter.tsx'
 
-function App() {
-
+const queryClient = new QueryClient()
+const App = () => {
     return (
-        <>
-            hello
-        </>
+        <QueryClientProvider client={queryClient}>
+            <CurrencyConverter />
+        </QueryClientProvider>
     )
 }
 
