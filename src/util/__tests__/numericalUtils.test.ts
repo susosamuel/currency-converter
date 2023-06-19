@@ -42,7 +42,7 @@ describe('sumProperty()', () => {
     })
 
     test('should return 0 for an empty array', () => {
-        const rows: any[] = []
+        const rows: never[] = []
         const property = 'valueAmountExchanged'
         const expectedSum = 0
 
