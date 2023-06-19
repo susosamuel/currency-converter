@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, UseQueryOptions } from '@tanstack/react-query'
 import { ExchangeRateResponse } from '../types/ExchangeRateResponse.ts'
 import { API_URL, getCurrencyParams } from '../util/currencyApiUtils.ts'
 import { ExchangeRateRequest } from '../types/ExchangeRateRequest.ts'
@@ -13,5 +13,5 @@ const getExchangeRate = async (request: ExchangeRateRequest): Promise<ExchangeRa
     return data
 }
 
-export const useExchangeRate = (request: ExchangeRateRequest) =>
-    useQuery<ExchangeRateResponse>(getExchangeRatesKey(request), () => getExchangeRate(request))
+export const useExchangeRate = (request: ExchangeRateRequest, options?: UseQueryOptions<ExchangeRateResponse>) =>
+    useQuery<ExchangeRateResponse>(getExchangeRatesKey(request), () => getExchangeRate(request), options)

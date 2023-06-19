@@ -5,5 +5,5 @@ interface CenteredLayoutProps {
 }
 
 export const CenteredLayout: FC<CenteredLayoutProps> = ({ children }) => (
-    <div className="grid place-items-center h-screen">{children}</div>
+    <div className="grid place-items-center">{children}</div>
 )
