@@ -1,7 +1,6 @@
 import { FC, useState } from 'react'
 import { CenteredLayout } from '../../components'
-import { Form } from './components/Form.tsx'
-import { Table } from './components/Table.tsx'
+import { Form, Table } from './components'
 import { TableRow } from '../../types/TableRow.ts'
 
 export const CurrencyConverter: FC = () => {
