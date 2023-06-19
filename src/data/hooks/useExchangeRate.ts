@@ -1,7 +1,6 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query'
-import { ExchangeRateResponse } from '../types/ExchangeRateResponse.ts'
 import { API_URL, getCurrencyParams } from '../util/currencyApiUtils.ts'
-import { ExchangeRateRequest } from '../types/ExchangeRateRequest.ts'
+import { ExchangeRateRequest, ExchangeRateResponse } from '../types.ts'
 
 const ExchangeRatesKey = 'ExchangeRatesKey'
 
@@ -9,7 +8,13 @@ const getExchangeRatesKey = (request: ExchangeRateRequest) => [ExchangeRatesKey,
 
 const getExchangeRate = async (request: ExchangeRateRequest): Promise<ExchangeRateResponse> => {
     const rsp = await fetch(`${API_URL}&${getCurrencyParams(request)}`)
+
+    if (!rsp.ok) {
+        throw new Error(`Failed to fetch exchange rate. Status: ${rsp.status}`)
+    }
+
     const { data } = await rsp.json()
+
     return data
 }
 

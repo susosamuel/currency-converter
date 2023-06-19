@@ -4,7 +4,7 @@ import { SupportedCurrency } from '../../../types/SupportedCurrency.ts'
 import { Button, LoadingWrapper } from '../../../components'
 import { useExchangeRate } from '../../../data/hooks'
 import { DEFAULT_SUMMARY_CURRENCY } from '../../../constants/DefaultCurrency.ts'
-import { roundAmount } from '../../../data/util/numericalUtils.ts'
+import { roundAmount } from '../../../util/numericalUtils.ts'
 import { TableRow } from '../../../types/TableRow.ts'
 
 interface FormProps {

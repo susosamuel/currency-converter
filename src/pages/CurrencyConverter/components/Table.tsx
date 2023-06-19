@@ -1,16 +1,16 @@
 import { FC } from 'react'
 import { TableRow } from '../../../types/TableRow.ts'
 import { DEFAULT_SUMMARY_CURRENCY } from '../../../constants/DefaultCurrency.ts'
-import { roundAmount } from '../../../data/util/numericalUtils.ts'
+import { roundAmount, sumArrayProperty } from '../../../util/numericalUtils.ts'
 
 interface TableProps {
     rows: TableRow[]
 }
 
 export const Table: FC<TableProps> = ({ rows }) => {
-    if (!rows.length) return null
+    if (!rows.length) return <>No entries were defined</>
 
-    const totalAmount = rows.reduce((acc, { valueAmountExchanged }) => acc + valueAmountExchanged, 0)
+    const totalAmount = sumArrayProperty<TableRow>(rows, 'valueAmountExchanged')
     return (
         <div className="relative overflow-x-auto my-5">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
