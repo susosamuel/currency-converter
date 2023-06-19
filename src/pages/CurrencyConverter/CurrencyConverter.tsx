@@ -1,25 +1,20 @@
-import { FC } from 'react'
-import { CenteredLayout, LoadingWrapper } from '../../components'
-import { useExchangeRate } from '../../data/hooks'
-import { SupportedCurrencies } from '../../types/SupportedCurrencies.ts'
+import { FC, useState } from 'react'
+import { CenteredLayout } from '../../components'
 import { Form } from './components/Form.tsx'
-import { DEFAULT_SUMMARY_CURRENCY } from '../../constants/DefaultCurrency.ts'
+import { Table } from './components/Table.tsx'
+import { TableRow } from '../../types/TableRow.ts'
 
 export const CurrencyConverter: FC = () => {
-    const { isLoading: areExchangeRatesLoading } = useExchangeRate({
-        baseCurrency: DEFAULT_SUMMARY_CURRENCY,
-        exchangeCurrencies: Object.values(SupportedCurrencies),
-    })
-
-    const addNewTableEntry = (newEntry: number) => {
-        console.log(newEntry)
+    const [tableRows, setTableRows] = useState<TableRow[]>([])
+    const addNewTableEntry = (tableRow: TableRow) => {
+        setTableRows((prev) => [...prev, tableRow])
     }
+
     return (
         <CenteredLayout>
-            <LoadingWrapper isLoading={areExchangeRatesLoading}>
-                <h2 className="font-extrabold my-4 text-2xl">Currency converter</h2>
-                <Form onSubmit={addNewTableEntry} />
-            </LoadingWrapper>
+            <h2 className="font-extrabold my-4 text-2xl">Currency converter</h2>
+            <Form onSubmit={addNewTableEntry} />
+            <Table rows={tableRows} />
         </CenteredLayout>
     )
 }

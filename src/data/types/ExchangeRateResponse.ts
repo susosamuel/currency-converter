@@ -1,5 +1,5 @@
-import { SupportedCurrencies } from '../../types/SupportedCurrencies.ts'
+import { SupportedCurrency } from '../../types/SupportedCurrency.ts'
 
 export type ExchangeRateResponse = {
-    [key in SupportedCurrencies]: number
+    [key in SupportedCurrency]: number
 }

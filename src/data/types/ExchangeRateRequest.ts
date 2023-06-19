@@ -1,6 +1,6 @@
-import { SupportedCurrencies } from '../../types/SupportedCurrencies.ts'
+import { SupportedCurrency } from '../../types/SupportedCurrency.ts'
 
 export type ExchangeRateRequest = {
-    baseCurrency: SupportedCurrencies
-    exchangeCurrencies: SupportedCurrencies[]
+    baseCurrency: SupportedCurrency
+    exchangeCurrencies: SupportedCurrency[]
 }
