@@ -17,7 +17,7 @@ export const Form: FC<FormProps> = ({ onSubmit }) => {
     const [exchangeCurrency, setExchangeCurrency] = useState<SupportedCurrency>(SupportedCurrency.CZK)
     const { data: exchangeRatesForCurrency, isLoading: areExchangeRatesLoading } = useExchangeRate({
         baseCurrency: DEFAULT_SUMMARY_CURRENCY,
-        exchangeCurrencies: [exchangeCurrency],
+        exchangeCurrencies: Object.values(SupportedCurrency),
     })
 
     const selectItems = Object.values(SupportedCurrency)
